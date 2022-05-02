@@ -47,9 +47,9 @@ sftp_encryptions = {
 create_common_logs = false
 
 #Use existing EFS
-efs_id = "fs-0eeeaff876a27cb76"
+efs_id = "your-efs-id"
 #Use existing EFS AP
-efs_ap_id = "fsap-0061a02b9332a7a25"
+efs_ap_id = "your-efs-ap-id"
 # Use existing EFS SG
 efs_sg_tags = {
   Name = "scenario1-efs-common-efs-sg"
@@ -85,10 +85,12 @@ sftp_users = [
   # }
 ]
 
+#List of email addresses to receive user automation emails, recommend using group email
 sftp_user_automation_subscribers = [
-  "vivgoyal@amazon.com"
+  "abc@xyz.com"
 ]
 
+#List of email address to receive daily activity report, recommend using group email
 sftp_daily_report_subscribers = [
-  "vivgoyal@amazon.com",
+  "abc@xyz.com",
 ]
