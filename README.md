@@ -1,6 +1,6 @@
 # AWS Transfer Family SFTP Server using Amazon EFS domain with automated operations
 
-Large organizations are migrating existing on-premises workloads to the AWS. Many of these workloads are legacy applications than are running on the Amazon EC2 instances. Often these legacy applications exchange files with other applications or trading partners via SFTP. Each SFTP client requires their own secured area for `inbound` and `outbound` files. The legacy application, however, requires access to all the files exchanged with all the SFTP clients.
+Large organizations are migrating existing on-premises workloads to the AWS. Many of these workloads are legacy applications that are running on the Amazon EC2 instances. Often these legacy applications exchange files with other applications or trading partners via SFTP. Each SFTP client requires their own secured area for `inbound` and `outbound` files. The legacy application, however, requires access to all the files exchanged with all the SFTP clients.
 
 This solution is a set of [Terraform](https://www.terraform.io/) modules and examples. It provisions an [AWS Transfer Family](https://aws.amazon.com/aws-transfer-family/) SFTP server that uses an [Amazon EFS](https://aws.amazon.com/efs/) File System via an Amazon EFS Access Point as the storage backend. It also provisions automation for the SFTP client folder maintenance on the Amazon EFS File System. Optionally, the solution can send SFTP client folder status email and SFTP activity email to different subscribers.
 
@@ -101,7 +101,7 @@ This solution primarily supports the following scenarios though many other scena
 - The current solution sends basic email alert and report. It can be enhanced to send better looking emails.
 - The current solution assumes a single AZ in a single region. It could leverage multiple AZs and / or use EFS replication to provide multi-region availability.
 - The current solution does not employ any form of backup.  EFS has the ability to do automatic backups and this could be leveraged.
-- Performance and throughput should be configured based on desired behavior from regular usage.
+- EFS performance and throughput should be configured based on desired behavior from regular usage.
 
 ## Security
 
