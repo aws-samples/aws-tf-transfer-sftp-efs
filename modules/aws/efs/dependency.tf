@@ -1,6 +1,6 @@
 module "efs_kms" {
-  source = "../kms"
-  count = local.create_kms ? 1 : 0
+  source = "github.com/aws-samples/aws-tf-kms//modules/aws/kms"
+  count  = local.create_kms ? 1 : 0
 
   region = var.region
 
@@ -9,27 +9,11 @@ module "efs_kms" {
 
   tags = var.tags
 
-  kms_config = {
-    kms_admin_roles = var.kms_admin_roles
-    kms_usage_roles = []
-    prefix          = var.project
-    keys_to_create = [
-      "efs",
-      #   "ebs",
-      #   "logs",
-      #   "efs",
-      #   "sns",
-      #   "sqs",
-      #   "backup",
-      #   "ssm",
-      #   "secretsmanager",
-      #   "session",
-      #   "rds",
-      #   "kinesis",
-      #   "s3"
-    ]
-    enable_key_rotation = false
-  }
+  kms_alias_prefix = var.project
+  kms_admin_roles  = var.kms_admin_roles
+  kms_usage_roles  = []
+
+  enable_kms_efs = true
 }
 
 output "efs_kms" {

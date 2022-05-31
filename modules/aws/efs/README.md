@@ -3,7 +3,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_efs_kms"></a> [efs\_kms](#module\_efs\_kms) | ../kms | n/a |
+| <a name="module_efs_kms"></a> [efs\_kms](#module\_efs\_kms) | github.com/aws-samples/aws-tf-kms//modules/aws/kms | n/a |
 
 ## Resources
 
