@@ -1,5 +1,5 @@
 module "transfer_kms" {
-  source = "../kms"
+  source = "github.com/aws-samples/aws-tf-kms//modules/aws/kms"
   count  = local.create_kms ? 1 : 0
 
   region = var.region
@@ -9,13 +9,13 @@ module "transfer_kms" {
 
   tags = var.tags
 
-  kms_config = {
-    kms_admin_roles = var.kms_admin_roles
-    kms_usage_roles = []
-    prefix          = var.project
-    keys_to_create = local.keys_to_create 
-    enable_key_rotation = false
-  }
+  kms_alias_prefix = var.project
+  kms_admin_roles  = var.kms_admin_roles
+  kms_usage_roles  = []
+
+  enable_kms_lambda = local.create_lambda_kms_alias
+  enable_kms_logs   = local.create_logs_kms_alias
+  enable_kms_sns    = local.create_sns_kms_alias
 }
 
 output "sftp_kms" {
@@ -41,7 +41,7 @@ module "transfer_efs" {
   subnet_tags = var.subnet_tags
 
   #create kms only if EFS is being created
-  kms_alias      = var.sftp_specs.efs_specs.kms_alias
+  kms_alias       = var.sftp_specs.efs_specs.kms_alias
   kms_admin_roles = var.kms_admin_roles
 
   efs_specs = [

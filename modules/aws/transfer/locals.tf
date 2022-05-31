@@ -7,12 +7,6 @@ locals {
   create_sns_kms_alias    = try(length(var.sftp_specs.encryption.sns_kms_alias), 0) == 0 && local.encrypt_sns ? true : false
   create_kms              = local.create_logs_kms_alias || local.create_lambda_kms_alias || local.create_sns_kms_alias ? true : false
 
-  keys_to_create = compact([
-    local.create_logs_kms_alias ? "logs" : "",
-    local.create_lambda_kms_alias ? "lambda" : "",
-    local.create_sns_kms_alias ? "sns" : "",
-  ])
-
   logs_kms_alias   = local.create_logs_kms_alias ? "alias/${var.project}/logs" : try(var.sftp_specs.encryption.logs_kms_alias, "alias/${var.project}/logs")
   lambda_kms_alias = local.create_lambda_kms_alias ? "alias/${var.project}/lambda" : try(var.sftp_specs.encryption.lambda_kms_alias, "alias/${var.project}/lambda")
   sns_kms_alias    = local.create_sns_kms_alias ? "alias/${var.project}/sns" : try(var.sftp_specs.encryption.sns_kms_alias, "alias/${var.project}/sns")
