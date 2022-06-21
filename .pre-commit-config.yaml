@@ -110,20 +110,3 @@ repos:
             "../../../modules/aws",
             "./examples/sftp/scenario3",
           ]
-  - repo: https://github.com/terraform-docs/terraform-docs
-    rev: "v0.16.0"
-    hooks:
-      - id: terraform-docs-system
-        args:
-          [
-            "markdown",
-            "table",
-            "--output-file",
-            "README.md",
-            "--hide",
-            "data-sources,requirements",
-            "--recursive",
-            "--recursive-path",
-            "../modules/aws",
-            "./bootstrap",
-          ]
