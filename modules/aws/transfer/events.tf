@@ -12,7 +12,7 @@ resource "aws_cloudwatch_event_rule" "create_user" {
   "detail": {
     "eventSource": ["transfer.amazonaws.com"],
     "eventName": ["CreateUser"],
-    "requestParameters": { 
+    "requestParameters": {
       "serverId": ["${aws_transfer_server.sftp.id}"]
     }
   }

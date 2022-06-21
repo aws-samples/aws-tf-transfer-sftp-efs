@@ -13,7 +13,7 @@ module "sftp" {
 
   r53_zone_name = var.r53_zone_name
 
-  kms_admin_roles = ["Admin"]
+  kms_admin_roles    = ["Admin"]
   create_common_logs = var.create_common_logs
 
   sftp_specs = {
@@ -51,7 +51,7 @@ module "sftp" {
       #security_group_tags = null
 
       encryption = true
-      kms_alias = var.efs_kms_alias
+      kms_alias  = var.efs_kms_alias
     }
 
     lambda_specs = {

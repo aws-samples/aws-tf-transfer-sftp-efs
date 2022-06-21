@@ -35,6 +35,10 @@ This example provisions the resources to simulate the scenario1:
 - Execute `terraform apply` and approve the changes to provision the resources.
 
 <!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
 ## Modules
 
 | Name | Source | Version |

@@ -49,7 +49,7 @@ variable "sftp_specs" {
     })
 
     efs_specs = object({
-      efs_id              = string      #if null, new EFS will be created 
+      efs_id              = string      #if null, new EFS will be created
       efs_ap_id           = string      #if null, new EFS AP will be created
       security_group_tags = map(string) #if efs_id is not null, then it must be provided
       encryption          = bool
@@ -95,5 +95,3 @@ variable "r53_zone_name" {
   type        = string
   default     = null
 }
-
-

@@ -22,7 +22,7 @@ resource "aws_security_group" "sftp_sg" {
 
   tags = merge(
     {
-      Name    = "${var.project}-${var.sftp_specs.server_name}-sftp-sg"
+      Name = "${var.project}-${var.sftp_specs.server_name}-sftp-sg"
     },
     var.tags
   )
@@ -60,7 +60,7 @@ resource "aws_security_group" "lambda_sg" {
 
   tags = merge(
     {
-      Name    = "${local.sftp_lambda_name}-sg"
+      Name = "${local.sftp_lambda_name}-sg"
     },
     var.tags
   )

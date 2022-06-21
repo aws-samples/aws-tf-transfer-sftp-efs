@@ -31,6 +31,10 @@ This is an example Terrafrom bootstrap script.
 - Once you have your Terraform state on Amazon S3, you can continue to make updates to bootstrap as needed, using the Amazon S3 as backend.
 
 <!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
 ## Modules
 
 | Name | Source | Version |

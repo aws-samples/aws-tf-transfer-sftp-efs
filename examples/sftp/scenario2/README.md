@@ -51,6 +51,10 @@ Use [examples/efs/scenario2](../../../examples/efs/scenario2) to setup this scen
 Use SFTP client of your choice to test the SFTP server.
 
 <!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
 ## Modules
 
 | Name | Source | Version |

@@ -236,7 +236,7 @@ resource "aws_sns_topic_policy" "sftp_daily_report" {
 }
 
 resource "aws_sns_topic_subscription" "sftp_daily_report" {
-  for_each  = { for email in (local.create_daily_report ? var.sftp_daily_report_subscribers : []) : email => email }
+  for_each  = { for email in(local.create_daily_report ? var.sftp_daily_report_subscribers : []) : email => email }
   topic_arn = aws_sns_topic.sftp_daily_report[0].arn
   protocol  = "email"
   endpoint  = each.value
@@ -244,7 +244,7 @@ resource "aws_sns_topic_subscription" "sftp_daily_report" {
   endpoint_auto_confirms = false
 
   #filter_policy        = ""
-    lifecycle {
+  lifecycle {
     ignore_changes = [
       # Ignore changes to the value, as it might have changed outside of TF
       pending_confirmation

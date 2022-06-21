@@ -4,7 +4,7 @@ data "aws_security_group" "efs_sg" {
 }
 
 resource "aws_security_group" "efs_sg" {
-	# checkov:skip=CKV2_AWS_5: attached to EFS
+  # checkov:skip=CKV2_AWS_5: attached to EFS
   for_each = { for efs in var.efs_specs : efs.name => efs if efs.efs_id == null && efs.security_group_tags == null }
 
   name        = "${var.project}-${each.value.name}-efs-sg"

@@ -11,7 +11,7 @@ module "common_efs" {
   vpc_tags    = var.vpc_tags
   subnet_tags = var.subnet_tags
 
-  kms_alias    = var.kms_alias
+  kms_alias       = var.kms_alias
   kms_admin_roles = ["Admin"]
 
   efs_specs = [

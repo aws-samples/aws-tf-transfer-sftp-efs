@@ -19,20 +19,20 @@ tags = {
 #Make sure that target VPC is identified uniquely via these tags
 vpc_tags = {
   "transfer/sftp/efs" = "1"
-  "Env"              = "DEV"
+  "Env"               = "DEV"
 }
 
 #Make sure that target subnets are tagged correctly
 subnet_tags = {
   "transfer/sftp/efs" = "1"
-  "Env"              = "DEV"
+  "Env"               = "DEV"
 }
 
 //---------------------------------------------------------//
 // EFS Variables
 //---------------------------------------------------------//
-kms_alias = "" 
-efs_id     = null
+kms_alias           = ""
+efs_id              = null
 security_group_tags = null
 efs_access_point_specs = [
   {

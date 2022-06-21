@@ -1,7 +1,7 @@
 resource "aws_transfer_server" "sftp" {
-  endpoint_type        = "VPC"
-  security_policy_name = "TransferSecurityPolicy-2020-06"
-  protocols            = ["SFTP"]
+  endpoint_type          = "VPC"
+  security_policy_name   = "TransferSecurityPolicy-2020-06"
+  protocols              = ["SFTP"]
   domain                 = "EFS"
   identity_provider_type = "SERVICE_MANAGED"
 
@@ -19,7 +19,7 @@ resource "aws_transfer_server" "sftp" {
 
   tags = merge(
     {
-      Name    = "${var.project}-sftp-server-${var.sftp_specs.server_name}"
+      Name = "${var.project}-sftp-server-${var.sftp_specs.server_name}"
     },
     var.tags
   )

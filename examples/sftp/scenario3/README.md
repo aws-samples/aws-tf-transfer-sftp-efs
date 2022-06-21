@@ -50,6 +50,10 @@ This example assumes following resources are already provisioned:
 Use SFTP client of your choice to test the SFTP server.
 
 <!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
 ## Modules
 
 | Name | Source | Version |

@@ -59,4 +59,3 @@ variable "efs_port" {
   type        = number
   default     = 2049
 }
-

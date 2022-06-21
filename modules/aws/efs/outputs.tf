@@ -15,4 +15,3 @@ output "efs_ap" {
     }
   }
 }
-

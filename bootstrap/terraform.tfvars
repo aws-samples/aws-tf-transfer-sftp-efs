@@ -6,7 +6,7 @@ region = "us-east-1"
 //---------------------------------------------------------//
 // Common Variables
 //---------------------------------------------------------//
-project = "aws-tf-transfer-sftp-efs"
+project  = "aws-tf-transfer-sftp-efs"
 env_name = "dev"
 tags = {
   Env     = "DEV"

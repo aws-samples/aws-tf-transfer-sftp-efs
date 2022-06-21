@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_log_group" "lambda_insights" {
   count = var.create_common_logs ? 1 : 0
-  
+
   name              = "/aws/lambda-insights"
   retention_in_days = 7
   kms_key_id        = local.logs_kms_key_id

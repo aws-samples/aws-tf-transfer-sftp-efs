@@ -70,4 +70,3 @@ module "transfer_efs" {
     }
   ]
 }
-

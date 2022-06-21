@@ -48,7 +48,7 @@ locals {
       arn      = efs.efs_id == null ? aws_efs_file_system.efs[efs.name].arn : data.aws_efs_file_system.efs[efs.name].arn
       dns_name = efs.efs_id == null ? aws_efs_file_system.efs[efs.name].dns_name : data.aws_efs_file_system.efs[efs.name].dns_name
       sg_id    = efs.security_group_tags != null ? data.aws_security_group.efs_sg[efs.name].id : efs.efs_id == null ? aws_security_group.efs_sg[efs.name].id : null
-      sg_tags = efs.security_group_tags != null ? efs.security_group_tags : efs.efs_id == null ? aws_security_group.efs_sg[efs.name].tags : null
+      sg_tags  = efs.security_group_tags != null ? efs.security_group_tags : efs.efs_id == null ? aws_security_group.efs_sg[efs.name].tags : null
     }
   }
 }

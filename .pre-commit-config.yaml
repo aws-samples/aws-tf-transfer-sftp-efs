@@ -1,0 +1,129 @@
+#pre-commit run -a
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      #- id: check-yaml
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+    - id: terraform-fmt-system
+      name: terraform-fmt
+      description: Format Terraform files via terraform CLI
+      language: system
+      entry: terraform fmt --recursive
+      pass_filenames: false
+      types: [terraform]
+    - id: terraform-checkov
+      name: terraform-checkov
+      description: Run Checkov on Terraform
+      language: system
+      entry: checkov -d . --quiet
+      pass_filenames: false
+      types: [terraform]
+  - repo: https://github.com/terraform-docs/terraform-docs
+    rev: "v0.16.0"
+    hooks:
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../modules/aws",
+            "./bootstrap",
+          ]
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../../../modules/aws",
+            "./examples/efs/scenario1",
+          ]
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../../../modules/aws",
+            "./examples/efs/scenario2",
+          ]
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../../../modules/aws",
+            "./examples/sftp/scenario1",
+          ]
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../../../modules/aws",
+            "./examples/sftp/scenario2",
+          ]
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../../../modules/aws",
+            "./examples/sftp/scenario3",
+          ]
+  - repo: https://github.com/terraform-docs/terraform-docs
+    rev: "v0.16.0"
+    hooks:
+      - id: terraform-docs-system
+        args:
+          [
+            "markdown",
+            "table",
+            "--output-file",
+            "README.md",
+            "--hide",
+            "data-sources,requirements",
+            "--recursive",
+            "--recursive-path",
+            "../modules/aws",
+            "./bootstrap",
+          ]

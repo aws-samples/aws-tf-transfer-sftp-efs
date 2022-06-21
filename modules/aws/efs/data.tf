@@ -14,10 +14,9 @@ data "aws_subnets" "subnets" {
 
 data "aws_kms_key" "efs_cmk" {
   for_each = { for efs in var.efs_specs : efs.name => efs if try(efs.encrypted, false) == true }
-  key_id = local.kms_alias
+  key_id   = local.kms_alias
 
   depends_on = [
     module.efs_kms
   ]
 }
-
