@@ -10,13 +10,13 @@ terraform {
   }
 
   # Configure the S3 backend
-  backend "s3" {
-    encrypt        = true
-    region         = "us-east-1"
-    bucket         = "aws-tf-transfer-sftp-efs-dev-terraform-state-bucket"
-    dynamodb_table = "aws-tf-transfer-sftp-efs-dev-terraform-state-locktable"
-    key            = "bootstrap/terraform.tfstate"
-  }
+  # backend "s3" {
+  #   encrypt        = true
+  #   region         = "us-east-1"
+  #   bucket         = "aws-tf-transfer-sftp-efs-dev-terraform-state-bucket"
+  #   dynamodb_table = "aws-tf-transfer-sftp-efs-dev-terraform-state-locktable"
+  #   key            = "bootstrap/terraform.tfstate"
+  # }
 }
 
 # Configure the AWS Provider to assume_role and set default region

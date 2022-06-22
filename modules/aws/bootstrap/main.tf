@@ -1,4 +1,4 @@
-data "aws_caller_identity" "current" {}
+# data "aws_caller_identity" "current" {}
 
 resource "aws_dynamodb_table" "tfstate" {
   # checkov:skip=CKV_AWS_119: KMS encryption is not in scope
@@ -25,6 +25,7 @@ resource "aws_dynamodb_table" "tfstate" {
   }
 }
 
+#tfsec:ignore:aws-s3-enable-bucket-logging
 resource "aws_s3_bucket" "tfstate" {
   # checkov:skip=CKV_AWS_18: not required
   # checkov:skip=CKV_AWS_19: encrypted
@@ -63,6 +64,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "tfstate" {
   }
 }
 
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket_server_side_encryption_configuration" "tfstate" {
   bucket = aws_s3_bucket.tfstate.id
   rule {
@@ -83,7 +85,7 @@ resource "aws_s3_bucket_public_access_block" "tfstate" {
   restrict_public_buckets = true
 }
 
-data "aws_iam_policy_document" "tls-only" {
+data "aws_iam_policy_document" "tls_only" {
   statement {
     sid = "Allow access to bucket only via TLS"
     principals {
@@ -110,5 +112,5 @@ data "aws_iam_policy_document" "tls-only" {
 
 resource "aws_s3_bucket_policy" "tfstate" {
   bucket = aws_s3_bucket.tfstate.id
-  policy = data.aws_iam_policy_document.tls-only.json
+  policy = data.aws_iam_policy_document.tls_only.json
 }

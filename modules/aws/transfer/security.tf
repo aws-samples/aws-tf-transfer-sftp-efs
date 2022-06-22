@@ -6,19 +6,6 @@ resource "aws_security_group" "sftp_sg" {
   name        = "${var.project}-${var.sftp_specs.server_name}-sftp-sg"
   description = "Allow inbound traffic from source to SFTP server"
   vpc_id      = data.aws_vpc.vpc.id
-  ingress {
-    from_port   = var.sftp_specs.security_group.sftp_port
-    to_port     = var.sftp_specs.security_group.sftp_port
-    protocol    = "tcp"
-    cidr_blocks = var.sftp_specs.security_group.source_cidrs
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
   tags = merge(
     {
@@ -26,6 +13,32 @@ resource "aws_security_group" "sftp_sg" {
     },
     var.tags
   )
+}
+
+#tfsec:ignore:aws-vpc-no-public-ingress-sgr
+resource "aws_security_group_rule" "ingress_sftp_sg" {
+  count = local.create_sftp_sg ? 1 : 0
+
+  description       = "Allow inbound traffic from source to SFTP server"
+  type              = "ingress"
+  from_port         = var.sftp_specs.security_group.sftp_port
+  to_port           = var.sftp_specs.security_group.sftp_port
+  protocol          = "tcp"
+  cidr_blocks       = var.sftp_specs.security_group.source_cidrs
+  security_group_id = aws_security_group.sftp_sg[0].id
+}
+
+#tfsec:ignore:aws-vpc-no-public-egress-sgr
+resource "aws_security_group_rule" "egress_sftp_sg" {
+  count = local.create_sftp_sg ? 1 : 0
+
+  description       = "Allow egress to all from SFTP Server"
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.sftp_sg[0].id
 }
 
 data "aws_security_group" "sftp_sg" {
@@ -41,22 +54,6 @@ resource "aws_security_group" "lambda_sg" {
   name        = "${local.sftp_lambda_name}-sg"
   description = "Allow outbound traffic from lambda to VPC"
   vpc_id      = data.aws_vpc.vpc.id
-  ingress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    self      = true
-  }
-
-  egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1"
-    #restrict to only VPC
-    #cidr_blocks = [data.aws_vpc.vpc.cidr_block]
-    #allow to VPC and internet, if subnets are route to internet
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
   tags = merge(
     {
@@ -64,6 +61,32 @@ resource "aws_security_group" "lambda_sg" {
     },
     var.tags
   )
+}
+
+#tfsec:ignore:aws-vpc-no-public-ingress-sgr
+resource "aws_security_group_rule" "ingress_lambda_sg" {
+  count = local.create_lambda_sg ? 1 : 0
+
+  description              = "Allow ingress from the same SG"
+  type                     = "ingress"
+  from_port                = 0
+  to_port                  = 0
+  protocol                 = "-1"
+  source_security_group_id = aws_security_group.lambda_sg[0].id
+  security_group_id        = aws_security_group.lambda_sg[0].id
+}
+
+#tfsec:ignore:aws-vpc-no-public-egress-sgr
+resource "aws_security_group_rule" "egress_lambda_sg" {
+  count = local.create_lambda_sg ? 1 : 0
+
+  description       = "Allow egress to all from Lambda"
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.lambda_sg[0].id
 }
 
 data "aws_security_group" "lambda_sg" {

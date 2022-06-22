@@ -1,6 +1,34 @@
-//---------------------------------------------------------//
-// Datasource Variables
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+Provider Variable
+---------------------------------------------------------*/
+variable "region" {
+  description = "The AWS Region e.g. us-east-1 for the environment"
+  type        = string
+}
+
+/*---------------------------------------------------------
+Common Variables
+---------------------------------------------------------*/
+variable "project" {
+  description = "Project name (prefix/suffix) to be used on all the resources identification"
+  type        = string
+}
+
+variable "env_name" {
+  description = "Environment name e.g. dev, prod"
+  type        = string
+  default     = "dev"
+}
+
+variable "tags" {
+  description = "Common and mandatory tags for the resources"
+  type        = map(string)
+  default     = {}
+}
+
+/*---------------------------------------------------------
+Datasource Variables
+---------------------------------------------------------*/
 variable "vpc_tags" {
   description = "Tags to discover target VPC, these tags should uniquely identify a VPC"
   type        = map(string)
@@ -11,9 +39,9 @@ variable "subnet_tags" {
   type        = map(string)
 }
 
-//---------------------------------------------------------//
-// SFTP Server Variables
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+SFTP Server Variables
+---------------------------------------------------------*/
 variable "kms_admin_roles" {
   description = "List Administrator roles for KMS, Provide at least one Admin role if create_kms is true"
   type        = list(string)
@@ -87,9 +115,9 @@ variable "sftp_daily_report_subscribers" {
   default     = []
 }
 
-//---------------------------------------------------------//
-// R53 Variables
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+R53 Variables
+---------------------------------------------------------*/
 variable "r53_zone_name" {
   description = "Route 53 Zone basename, If not nulls R53 record will be created for the SFTP server"
   type        = string

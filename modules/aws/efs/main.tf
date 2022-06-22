@@ -115,7 +115,7 @@ data "aws_efs_access_points" "efs_aps" {
 }
 
 #efs resource policy
-data "aws_iam_policy_document" "efs-policy" {
+data "aws_iam_policy_document" "efs_policy" {
   for_each = { for efs in var.efs_specs : efs.name => efs }
 
   statement {
@@ -191,11 +191,11 @@ data "aws_iam_policy_document" "efs-policy" {
 
 
 #resource policy for EFS
-resource "aws_efs_file_system_policy" "efs-policy" {
+resource "aws_efs_file_system_policy" "efs_policy" {
   for_each       = { for efs in var.efs_specs : efs.name => efs }
   file_system_id = local.efs[each.value.name].id
 
   bypass_policy_lockout_safety_check = false
 
-  policy = data.aws_iam_policy_document.efs-policy[each.value.name].json
+  policy = data.aws_iam_policy_document.efs_policy[each.value.name].json
 }

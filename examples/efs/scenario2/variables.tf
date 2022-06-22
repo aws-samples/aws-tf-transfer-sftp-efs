@@ -1,14 +1,14 @@
-//---------------------------------------------------------//
-// Provider Variable
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+Provider Variable
+---------------------------------------------------------*/
 variable "region" {
   description = "The AWS Region e.g. us-east-1 for the environment"
   type        = string
 }
 
-//---------------------------------------------------------//
-// Common Variables
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+Common Variables
+---------------------------------------------------------*/
 variable "project" {
   description = "Project name (prefix/suffix) to be used on all the resources identification"
   type        = string
@@ -24,9 +24,9 @@ variable "tags" {
   type        = map(string)
 }
 
-//---------------------------------------------------------//
-// Datasource Variables
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+Datasource Variables
+---------------------------------------------------------*/
 variable "vpc_tags" {
   description = "Tags to discover target VPC, these tags should uniquely identify a VPC"
   type        = map(string)
@@ -37,9 +37,9 @@ variable "subnet_tags" {
   type        = map(string)
 }
 
-//---------------------------------------------------------//
-// EFS Variables
-//---------------------------------------------------------//
+/*---------------------------------------------------------
+EFS Variables
+---------------------------------------------------------*/
 variable "kms_alias" {
   description = "KMS Alias to discover KMS for EFS encryption, if not provided a new CMK will be created"
   type        = string

@@ -1,3 +1,8 @@
+output "efs_kms" {
+  description = "Outputs from KMS module forwarded"
+  value       = [for kms in module.efs_kms : kms.key_aliases]
+}
+
 output "efs" {
   description = "Elastic File System info"
   value       = { for efs in local.efs : efs.name => efs }

@@ -1,5 +1,5 @@
 module "transfer_kms" {
-  source = "github.com/aws-samples/aws-tf-kms//modules/aws/kms"
+  source = "github.com/aws-samples/aws-tf-kms//modules/aws/kms?ref=v1.0.0"
   count  = local.create_kms ? 1 : 0
 
   region = var.region
@@ -16,11 +16,6 @@ module "transfer_kms" {
   enable_kms_lambda = local.create_lambda_kms_alias
   enable_kms_logs   = local.create_logs_kms_alias
   enable_kms_sns    = local.create_sns_kms_alias
-}
-
-output "sftp_kms" {
-  description = "Outputs from KMS module"
-  value       = [for kms in module.transfer_kms : kms.key_aliases]
 }
 
 module "transfer_efs" {

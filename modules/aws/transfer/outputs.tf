@@ -1,3 +1,8 @@
+output "sftp_kms" {
+  description = "Outputs from KMS module"
+  value       = [for kms in module.transfer_kms : kms.key_aliases]
+}
+
 output "sftp_server" {
   description = "DNS name of the SFTP server"
   value       = [for r53_rec in aws_route53_record.sftp_rec : r53_rec.fqdn]

@@ -1,5 +1,5 @@
 module "efs_kms" {
-  source = "github.com/aws-samples/aws-tf-kms//modules/aws/kms"
+  source = "github.com/aws-samples/aws-tf-kms//modules/aws/kms?ref=v1.0.0"
   count  = local.create_kms ? 1 : 0
 
   region = var.region
@@ -14,9 +14,4 @@ module "efs_kms" {
   kms_usage_roles  = []
 
   enable_kms_efs = true
-}
-
-output "efs_kms" {
-  description = "Outputs from KMS module forwarded"
-  value       = [for kms in module.efs_kms : kms.key_aliases]
 }

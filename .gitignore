@@ -1,7 +1,8 @@
 .DS_Store
 .terraform
-.terraform-*
-.terraform.*
 *.backup
 *.tfstate
 .temp
+.external_modules
+*.bkp
+*.swp
