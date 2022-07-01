@@ -95,7 +95,7 @@ data "aws_security_group" "lambda_sg" {
 }
 
 data "aws_security_group" "sftp_efs" {
-  id   = local.create_efs_sg ? module.transfer_efs[0].efs["transfer-${var.sftp_specs.server_name}"].sg_id : null
+  id   = local.create_efs_sg ? module.transfer_efs[0].efs.sg_id : null
   tags = local.create_efs_sg ? null : var.sftp_specs.efs_specs.security_group_tags
 }
 

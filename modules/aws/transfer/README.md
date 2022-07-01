@@ -18,7 +18,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_transfer_efs"></a> [transfer\_efs](#module\_transfer\_efs) | ../efs | n/a |
+| <a name="module_transfer_efs"></a> [transfer\_efs](#module\_transfer\_efs) | github.com/aws-samples/aws-tf-efs//modules/aws/efs | v1.0.0 |
 | <a name="module_transfer_kms"></a> [transfer\_kms](#module\_transfer\_kms) | github.com/aws-samples/aws-tf-kms//modules/aws/kms | v1.0.0 |
 
 ## Resources

@@ -6,11 +6,11 @@ region = "us-east-1"
 /*---------------------------------------------------------
 Common Variables
 ---------------------------------------------------------*/
-project  = "scenario1-efs"
+project  = "scenario1-efs-sftp"
 env_name = "dev"
 tags = {
   Env     = "DEV"
-  Project = "scenario1-efs"
+  Project = "scenario1-efs-sftp"
 }
 
 /*---------------------------------------------------------
@@ -40,9 +40,11 @@ efs_access_point_specs = [
     efs_ap          = "sftp_scenario1"
     uid             = 0
     gid             = 0
-    root_path       = "/dev/scenario1-efs/sftp/common"
+    secondary_gids  = []
+    root_path       = "/dev/scenario1-efs-sftp/sftp/common"
     owner_uid       = 0
     owner_gid       = 0
     root_permission = "0755"
+    principal_arns  = ["*"]
   }
 ]

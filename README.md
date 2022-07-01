@@ -29,7 +29,9 @@ The solution has following features and benefits:
 
 - The target AWS Account and AWS Region are identified.
 - The AWS User/Role executing the Terraform scripts must have permissions to provision the target resources.
-- The Terraform CLI (`version = ">= 1.0.4"`) is installed.
+- The [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started) (`version = ">= 1.1.9"`) is installed.
+- The [Python 3.9+](https://www.python.org/downloads/) is installed.
+- AWS SDK for Python [boto3 1.24+](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#installation) is installed.
 - Terraform backend provider and state locking providers are identified and bootstrapped.
   - An [example bootstrap](./bootstrap) module/example is provided that provisions an Amazon S3 bucket for Terraform state storage and Amazon DynamoDB table for Terraform state locking.
     - The Amazon S3 bucket name has to be globally unique.
@@ -49,7 +51,10 @@ The solution has following features and benefits:
 ## Usage
 
 - Use the module via [GitHub source](https://www.terraform.io/language/modules/sources#github) or copy the module into your repository.
-- Incorporate the module in your CI/CD pipeline as appropriate.
+- Incorporate the module in your infrastructure/storage [CI](https://aws.amazon.com/devops/continuous-integration/)/[CD](https://aws.amazon.com/devops/continuous-delivery/) [pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html) as appropriate.
+- This solution uses following external modules
+  - [aws-tf-kms](https://github.com/aws-samples/aws-tf-kms) to provision AWS KMS Key, if encryption is enabled and `kms_alias` is not provided.
+  - [aws-tf-efs](https://github.com/aws-samples/aws-tf-efs) to provision Amazon EFS or EFS Access Point, if `efs_id` is null or `efs_ap_id` is null.
 
 ## Scenarios
 

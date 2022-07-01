@@ -52,12 +52,12 @@ efs_id = "your-efs-id"
 efs_ap_id = "your-efs-ap-id"
 # Use existing EFS SG
 efs_sg_tags = {
-  Name = "scenario1-efs-common-efs-sg"
+  Name = "scenario1-efs-sftp-common-efs-sg"
   Env  = "DEV"
 }
 
 #efs exists, so kms must exist
-efs_kms_alias = "alias/scenario1-efs/efs"
+efs_kms_alias = "alias/scenario1-efs-sftp/efs"
 
 #create new roles
 user_role    = null

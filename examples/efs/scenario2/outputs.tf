@@ -10,5 +10,5 @@ output "efs_ap" {
 
 output "efs_kms" {
   description = "KMS Keys created for EFS"
-  value       = module.common_efs.efs_kms
+  value       = module.common_efs.efs_kms_aliases
 }

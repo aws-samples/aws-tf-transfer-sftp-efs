@@ -6,11 +6,11 @@ region = "us-east-1"
 /*---------------------------------------------------------
 Common Variables
 ---------------------------------------------------------*/
-project  = "scenario2-efs"
+project  = "scenario2-efs-sftp"
 env_name = "dev"
 tags = {
   Env     = "DEV"
-  Project = "scenario2-efs"
+  Project = "scenario2-efs-sftp"
 }
 
 /*---------------------------------------------------------

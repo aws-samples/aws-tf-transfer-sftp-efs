@@ -65,10 +65,12 @@ variable "efs_access_point_specs" {
     efs_ap          = string # unique name e.g. common_sftp
     uid             = number
     gid             = number
+    secondary_gids  = list(number)
     root_path       = string # e.g. /{env}/{project}/{purpose}/{name}
     owner_uid       = number # e.g. 0
     owner_gid       = number # e.g. 0
     root_permission = string # e.g. 0755
+    principal_arns  = list(string)
   }))
   default = []
 }
