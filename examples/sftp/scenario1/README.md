@@ -14,15 +14,14 @@ Use [examples/efs/scenario1](../../../examples/efs/scenario1) to setup this scen
 ## Prerequisites
 
 - Terraform backend provider and state locking providers are identified and bootstrapped.
-  - An [example bootstrap](../../../bootstrap) module/example is provided that provisions Amazon S3 for Terraform state storage and Amazon DynamoDB for Terraform state locking.
+  - A [bootstrap](../../../bootstrap) module/example is provided that provisions Amazon S3 for Terraform state storage and Amazon DynamoDB for Terraform state locking.
 - The target VPC along with the target Subnets exist and identified via Tags.
+  - A [vpc](../../../vpc) example is provided that provisions VPC, Subnets and related resources with example tagging.
   - The example uses the following tags to identify the target VPC and Subnets.
-
     ```text
     "transfer/sftp/efs" = "1"
     "Env"               = "DEV"
     ```
-
 - Create a [ssh key-pair](https://www.ssh.com/academy/ssh/keygen) for each SFTP client authentication. Or obtain the public key from the SFTP client.
   - Copy the public key(s) in the `users` folder e.g. `users/test.pub`
 - Modify `terraform.tfvars` to match your requirements. Check the values for the following variables.

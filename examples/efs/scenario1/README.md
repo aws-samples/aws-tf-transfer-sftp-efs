@@ -12,10 +12,10 @@ This example provisions the resources to simulate the scenario1:
 ## Prerequisites
 
 - Terraform backend provider and state locking providers are identified and bootstrapped.
-  - An [example bootstrap](../../../bootstrap) module/example is provided that provisions Amazon S3 for Terraform state storage and Amazon DynamoDB for Terraform state locking.
+  - A [bootstrap](../../../bootstrap) module/example is provided that provisions Amazon S3 for Terraform state storage and Amazon DynamoDB for Terraform state locking.
 - The target VPC along with the target Subnets exist and identified via Tags.
+  - A [vpc](../../../vpc) example is provided that provisions VPC, Subnets and related resources with example tagging.
   - The example uses the following tags to identify the target VPC and Subnets.
-
     ```text
     "transfer/sftp/efs" = "1"
     "Env"               = "DEV"

@@ -33,16 +33,10 @@ The solution has following features and benefits:
 - The [Python 3.9+](https://www.python.org/downloads/) is installed.
 - AWS SDK for Python [boto3 1.24+](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#installation) is installed.
 - Terraform backend provider and state locking providers are identified and bootstrapped.
-  - An [example bootstrap](./bootstrap) module/example is provided that provisions an Amazon S3 bucket for Terraform state storage and Amazon DynamoDB table for Terraform state locking.
+  - A [bootstrap](./bootstrap) module/example is provided that provisions an Amazon S3 bucket for Terraform state storage and Amazon DynamoDB table for Terraform state locking.
     - The Amazon S3 bucket name has to be globally unique.
-- The target VPC along with the target Subnets exist and identified via tags.
-  - The examples use the following tags to identify the target VPC and Subnets.
-
-    ```text
-    "transfer/sftp/efs" = "1"
-    "Env"               = "DEV"
-    ```
-
+- The target VPC along with the target Subnets exist and are identified via Tags.
+  - A [vpc](./vpc) example is provided that provisions VPC, Subnets and related resources with example tagging.
 - A unique project code name e.g. `appx-sftp` is identified that will be used in naming all the resources.
 - Uniform resource tagging scheme is identified.
   - The examples use only two tags: `Env` and `Project`

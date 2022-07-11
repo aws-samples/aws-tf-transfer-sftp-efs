@@ -7,6 +7,8 @@ This solution is a set of [Terraform](https://www.terraform.io/) modules and exa
 The Amazon EFS File System can be mounted on the Amazon EC2 instance(s) hosting the target application(s) needing access to the `inbound` and `outbound` files.
 <p align="center"><img src="https://github.com/aws-samples/aws-tf-transfer-sftp-efs/raw/main/images/aws-tf-transfer-sftp-efs-SFTP1.png" width="95%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 ## Features and Benefits
 
 The solution has following features and benefits:
@@ -33,16 +35,10 @@ The solution has following features and benefits:
 - The [Python 3.9+](https://www.python.org/downloads/) is installed.
 - AWS SDK for Python [boto3 1.24+](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#installation) is installed.
 - Terraform backend provider and state locking providers are identified and bootstrapped.
-  - An [example bootstrap](https://github.com/aws-samples/aws-tf-transfer-sftp-efs/tree/main/bootstrap) module/example is provided that provisions an Amazon S3 bucket for Terraform state storage and Amazon DynamoDB table for Terraform state locking.
+  - A [bootstrap](https://github.com/aws-samples/aws-tf-transfer-sftp-efs/tree/main/bootstrap) module/example is provided that provisions an Amazon S3 bucket for Terraform state storage and Amazon DynamoDB table for Terraform state locking.
     - The Amazon S3 bucket name has to be globally unique.
-- The target VPC along with the target Subnets exist and identified via tags.
-  - The examples use the following tags to identify the target VPC and Subnets.
-
-    ```text
-    "transfer/sftp/efs" = "1"
-    "Env"               = "DEV"
-    ```
-
+- The target VPC along with the target Subnets exist and are identified via Tags.
+  - A [vpc](https://github.com/aws-samples/aws-tf-transfer-sftp-efs/tree/main/vpc) example is provided that provisions VPC, Subnets and related resources with example tagging.
 - A unique project code name e.g. `appx-sftp` is identified that will be used in naming all the resources.
 - Uniform resource tagging scheme is identified.
   - The examples use only two tags: `Env` and `Project`
@@ -86,6 +82,8 @@ This solution primarily supports the following scenarios though many other scena
 
   Use [examples/sftp/scenario2](https://github.com/aws-samples/aws-tf-transfer-sftp-efs/tree/main/examples/sftp/scenario2/) to execute this scenario.
 
+<div style="page-break-after: always;"></div>
+
 ### Scenario 3: Owned EFS and Owned EFS Access Point
 
 - EFS file system does not exist. It is owned by the SFTP server.
@@ -96,6 +94,8 @@ This solution primarily supports the following scenarios though many other scena
   <img src="https://github.com/aws-samples/aws-tf-transfer-sftp-efs/raw/main/images/aws-tf-transfer-sftp-efs-VPC.png" width="50%"/>
 
   Use [examples/sftp/scenario3](https://github.com/aws-samples/aws-tf-transfer-sftp-efs/tree/main/examples/sftp/scenario3/) to execute this scenario.
+
+<div style="page-break-after: always;"></div>
 
 ## Future Enhancements
 
